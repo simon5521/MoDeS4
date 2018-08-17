@@ -3,13 +3,12 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-#include "connections.h"
-#include "music.h"
+#include "connectons.h"
 
 
 const char* mqtt_server = "192.168.1.230";
 
-const char* TOPIC="actuator/buzzer";
+const char* TOPIC="actuator/lights";
 const char* MQTTID = "";
 const char* MQTTPSWD = "";
 
