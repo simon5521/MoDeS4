@@ -1,5 +1,5 @@
 
-#define LABWIFI
+#define LABORWIFI
 
 
 #ifdef LABWIFI
@@ -10,7 +10,7 @@
 #ifdef LABORWIFI
        char* ssid     = "MoDeS3";
        char* password = "LaborImage";
-       char* host = "192.168.1.239";
+       char* host = "192.168.1.230";
 #endif
 #ifdef OTTHONWIFI
        char* ssid     = "VargaK";

@@ -24,6 +24,9 @@
 #define SENSOR_MONITOR
 
 
+#define VERSION_3_2
+
+
 
 class SensorMonitor{
   private:
@@ -43,16 +46,40 @@ class SensorMonitor{
     MFRC522 rfid;
     MFRC522::MIFARE_Key key;
     const int coreID=1;
-    const int ssPinGyro=14;
-    const int ssPinRFID=12;
-    const int rstPinRFID=27;
-    const int dhtPin=4;
-    const int forcePin=33;
-    const int lightPin=25;
-//    const int infraPin1=32;
-    const int infraPin1=27;
-    const int infraPin2=13;
-//    DHT dht(dhtPin, DHT11);
+    #ifdef VERSION_3_3
+      const char DEVICEID[50] = "RailSensor3.3_N.o.1";
+      const int ssPinGyro=14;
+      const int ssPinRFID=17;
+      const int rstPinRFID=16;
+      const int dhtPin=4;
+      const int forcePin=33;
+      const int lightPin=25;
+      const int infraPin1=32;
+      const int infraPin2=13;
+      //DHT dht(dhtPin, DHT11);
+    #endif
+    #ifdef VERSION_3_2
+      const char DEVICEID[50] = "RailSensor3.2_N.o.1";
+      const int ssPinGyro=14;
+      const int ssPinRFID=12;
+      const int rstPinRFID=16;
+      const int dhtPin=4;
+      const int forcePin=33;
+      const int lightPin=25;
+      const int infraPin1=32;
+      const int infraPin2=13;
+      //DHT dht(dhtPin, DHT11);
+    #endif
+    #ifdef VERSION_3_1
+      const char DEVICEID[50] = "RailSensor3.1_N.o.1";
+      const int ssPinGyro=14;
+      const int ssPinRFID=12;
+      const int rstPinRFID=35;
+      const int forcePin=33;
+      const int lightPin=25;
+      const int infraPin1=27;
+      const int infraPin2=13;
+    #endif
     bool running;
     bool isRunning=false;
 
@@ -64,7 +91,7 @@ class SensorMonitor{
     #ifdef LABORWIFI
        char* ssid     = "MoDeS3";
        char* password = "LaborImage";
-       char* host = "192.168.1.239";
+       char* host = "192.168.1.150";
     #endif
     #ifdef OTTHONWIFI
        char* ssid     = "VargaK";

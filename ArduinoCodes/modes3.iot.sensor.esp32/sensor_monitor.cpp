@@ -9,10 +9,8 @@ void SensorMonitor::mqttconnect() {
   /* Loop until reconnected */
   while (!client.connected()) {
     Serial.print("MQTT connecting ...");
-    /* client ID */
-    String clientId = "TRAINNODE01";
     /* connect now */
-    if (client.connect("MQTT", MQTTID, MQTTPSWD)) {
+    if (client.connect("rail")) {
       Serial.println("connected");
     } else {
       Serial.print("failed, status code =");
@@ -102,7 +100,7 @@ void SensorMonitor::update(){
       // Create the root object
       JsonObject& root = jsonBuffer.createObject();
 
-      root["SensorID"]="002";
+      root["SensorID"]=DEVICEID;
       //root["RedLight"]=String(red);
       //root["BlueLight"]=String(blue);
       //root["GreenLight"]=String(green);
@@ -177,6 +175,9 @@ SensorMonitor::SensorMonitor(){
   //initialise the color sensor
   color.init();
   color.enableLightSensor(false);
+
+  pinMode(infraPin1,INPUT);
+  pinMode(infraPin2,INPUT);
   delay(10);
 
 //  DHT.begin();
@@ -216,15 +217,13 @@ SensorMonitor::SensorMonitor(){
   //Serial.println("Creating update thread");
   //xTaskCreatePinnedToCore(updateCallback,"update",50000,this,3,NULL,0);
 
-  #ifdef MQTTCOMM
   client=PubSubClient(espClient);
   Serial.println("initalising mqtt connection...");
-  client.setServer("192.168.1.230",1883);
+  client.setServer(host,1883);
   mqttconnect();
 
   Serial.println("initalisation of mqtt connection is successful :)");
 
-  #endif
   
   Serial.println("initalisation is successful :)");
   
@@ -246,6 +245,3 @@ void SensorMonitor::stop(){
   }
   Serial.println("monitoring has stopped");
 }
-
-
-

@@ -6,14 +6,14 @@
 #include "connectons.h"
 
 
-const char* mqtt_server = "192.168.1.230";
+const char* mqtt_server = "192.168.1.150";
 
-const char* TOPIC="actuator/lights";
+const char* TOPIC="command/light";
 const char* MQTTID = "";
 const char* MQTTPSWD = "";
 
 
-String clientId = "MoDeS4_IoT_Actuator_Buzzer_0001";
+String clientId = "MoDeS4_IoT_Actuator_Light_0001";
 
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -34,7 +34,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 
-  if(((char) payload[0])==0){
+  if(((char) payload[0])== '0'){
     digitalWrite(D0,LOW);
     digitalWrite(D1,LOW);
     digitalWrite(D2,LOW);
@@ -45,7 +45,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(D7,LOW);
     
   }
-  if(((char) payload[0])==1){
+  if(((char) payload[0])== '1'){
     digitalWrite(D0,HIGH);
     digitalWrite(D1,HIGH);
     digitalWrite(D2,HIGH);
