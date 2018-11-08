@@ -1,16 +1,10 @@
 package hu.bme.masterrace.Data;
 
-import hu.bme.masterrace.InfluxConnector.CameraDataInfluxConnector;
-import hu.bme.masterrace.InfluxConnector.DHTDataInfluxConnector;
-import hu.bme.masterrace.InfluxConnector.LightDataInfluxConnector;
-import hu.bme.masterrace.InfluxConnector.RailDataInfluxConnector;
-import hu.bme.masterrace.Main;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import javafx.scene.effect.Light;
+import hu.bme.masterrace.InfluxConnector.*;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import static hu.bme.masterrace.Main.accDataInfluxConnector;
 
 public class CreateObjectFromData {
 
@@ -22,7 +16,7 @@ public class CreateObjectFromData {
         switch (myClass) {
             case "AccData":
                 AccData accData = new AccData(jsonObject);
-                accDataInfluxConnector.addData(accData);
+                AccDataInfluxConnector.addData(accData);
                 break;
             case "CameraData":
                 CameraData cameraData = new CameraData(jsonObject);
