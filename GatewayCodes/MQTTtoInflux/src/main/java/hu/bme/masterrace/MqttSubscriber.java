@@ -8,8 +8,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.sql.Date;
 
-import static hu.bme.masterrace.Main.createObjectFromData;
-
 class MqttSubscriber {
 
 
@@ -36,8 +34,8 @@ class MqttSubscriber {
             }
 
             public void messageArrived(String topic, MqttMessage message) {
-                System.out.println(message);
-                createObjectFromData = new CreateObjectFromData(myClass, message);
+                System.out.println("messageArrived: " + message);
+                CreateObjectFromData createObjectFromData = new CreateObjectFromData(myClass, message);
             }
 
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken){}

@@ -10,11 +10,12 @@ public class LightData extends Data {
         super(sensorID, type, microTimeStamp);
         this.light = light;
     }
-    // {"SensorID":"mySensorLight", "Type":"Light", "MicroTimeStamp":"11111", "Light":"500"}
-
+    // {"SensorID":"007","Light":"1024","MicroTimeStamp":"1568917","Type":"light"}
     LightData(JsonObject json) {
         super(json);
-        light =Integer.parseInt(json.get("Light").toString());
+        System.out.println("lightDataConstructor" + json.get("Light").toString());
+        light =Integer.parseInt(json.get("Light").toString().substring(1, json.get("Light").toString().length() - 1));
+        System.out.println(this.toString());
     }
 
     public int getLight() {
@@ -23,7 +24,7 @@ public class LightData extends Data {
 
     public String toString(){
         return ("LightData: " + "Light: " + getLight()
-                +" SensorID: " + this.getSensorID() + " MicroTimeStamp" + this.getMicroTimeStamp());
+                +" SensorID: " + this.getSensorID() + " MicroTimeStamp " + this.getMicroTimeStamp());
     }
 
 }

@@ -16,16 +16,14 @@ public class AccData
     }
 
 
-    // {"SensorID":"mySensor1", "Type":"Acc", "MicroTimeStamp":"11111", "AccX":"1", "AccY":"1", "AccZ":"1" }
+    // {"SensorID":"mySensor1","Type":"Acc","MicroTimeStamp":"11111","AccX":"1","AccY":"1","AccZ":"1" }
 
     public AccData(JsonObject json) {
         super(json);
-        //AccX = Double.valueOf(json.get("AccX").toString().substring(1, json.get("AccX").toString().length() - 1)  );
-        //AccY = Double.valueOf(json.get("AccY").toString().substring(1, json.get("AccY").toString().length() - 1));
-        //AccZ = Double.valueOf(json.get("AccZ").toString().substring(1, json.get("AccZ").toString().length() - 1));
-        AccX = Double.valueOf(json.get("AccZ").toString());
-        AccY = Double.valueOf(json.get("AccZ").toString());
-        AccZ = Double.valueOf(json.get("AccZ").toString());
+        AccX = Double.valueOf(json.get("AccX").toString().substring(1, json.get("AccX").toString().length() - 1)  );
+        AccY = Double.valueOf(json.get("AccY").toString().substring(1, json.get("AccY").toString().length() - 1));
+        AccZ = Double.valueOf(json.get("AccZ").toString().substring(1, json.get("AccZ").toString().length() - 1));
+
     }
 
     @Override

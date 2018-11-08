@@ -15,8 +15,8 @@ public class RailData extends AccData {
     // {"SensorID":"mySensor1", "Type":"Acc", "MicroTimeStamp":"11111", "AccX":"1", "AccY":"1", "AccZ":"1", "Infra1":"1", "Infra2":"1" }
     public RailData(JsonObject json) {
         super(json);
-        Infra1 = Integer.valueOf(json.get("Infra1").toString());
-        Infra2 = Integer.valueOf(json.get("Infra2").toString());
+        Infra1 = Integer.valueOf(json.get("Infra1").toString().substring(1, json.get("Infra1").toString().length() - 1));
+        Infra2 = Integer.valueOf(json.get("Infra2").toString().substring(1, json.get("Infra1").toString().length() - 1));
     }
 
     public int getInfra1() {

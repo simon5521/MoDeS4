@@ -20,7 +20,6 @@ public class AccDataInfluxConnector extends InfluxConnector  {
                         .addField("accz", accData.getAccZ())
                         .addField("microTimeStamp", accData.getMicroTimeStamp())
                         .build());
-
         System.out.println( "sent data on "+ currentTimeMillis() + accData.toString());
     }
 }

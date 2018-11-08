@@ -17,9 +17,9 @@ public abstract class Data {
     Data(JsonObject json) {
         try {
             System.out.println("dataConstr");
-            SensorID = json.get("SensorID").toString();
-            Type = json.get("Type").toString();
-            MicroTimeStamp = json.get("MicroTimeStamp").toString();
+            SensorID = json.get("SensorID").toString().substring(1, json.get("SensorID").toString().length() - 1);
+            Type = json.get("Type").toString().substring(1, json.get("Type").toString().length() - 1);
+            MicroTimeStamp = json.get("MicroTimeStamp").toString().substring(1, json.get("MicroTimeStamp").toString().length() - 1);
         } catch (Exception e) {
             System.out.println("Parse failed" + json.get("SensorID").toString());
         }

@@ -27,6 +27,7 @@ public class CreateObjectFromData {
                 DHTDataInfluxConnector.addData(dhtData);
                 break;
             case "LightData":
+                System.out.println("Light Data create object from data");
                 LightData lightData = new LightData(jsonObject);
                 LightDataInfluxConnector.addData(lightData);
                 break;
