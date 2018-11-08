@@ -17,6 +17,5 @@ public class Main {
         new MqttSubscriber(serverURL, "raw/cameradata", "CameraData");
         new MqttSubscriber(serverURL, "raw/rail", "RailData");
         new MqttSubscriber(serverURL, "raw/light", "LightData");
-
     }
 }
