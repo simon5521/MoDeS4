@@ -9,7 +9,7 @@ import static java.lang.System.currentTimeMillis;
 
 public class AccDataInfluxConnector extends InfluxConnector  {
 
-    public void addData(AccData accData) {
+    public static void addData(AccData accData) {
 
         databaseConnection.write(
                 Point.measurement("AccSensorRaw")
